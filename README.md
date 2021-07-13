@@ -1,10 +1,8 @@
 # 문서 안내
 
-* 이 곳은 Ddongddi Bot Studio의 서비스 정책과 개인정보수집*이용정책, 그리고 봇 정지 사유가 적혀있는 곳입니다.
+* 이 곳은 Ddongddi Bot Studio의 규칙과, 그리고 봇 정지 사유가 적혀있는 곳입니다.
 
-* 서비스 정책은 ""으로 들어가 주시면 됩니다.
-
-* 개인정보수집,이용정책은 ""으로 들어가 주시면 됩니다.
+* 규칙은 "https://github.com/Ddongddi/Ddongddi-Studio-Documents/blob/main/SERVICE.md" 에 있습니다.
 
 * 봇 정지 사유는 "" 폴더 안에 있습니다.
 
