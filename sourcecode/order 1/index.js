@@ -73,4 +73,4 @@ client.on('message', async msg => {
     }
 })
 
-client.login('토큰 입력')
+client.login('토큰_입력')
