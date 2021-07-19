@@ -7,7 +7,7 @@ client.once('ready', async () => {
 
     client.user.setStatus('online');
 
-      client.user.setActivity('Made by Ddongddi Bot Studio', {type: "PLAYING"})
+    client.user.setActivity('Made by Ddongddi Bot Studio', { type: "PLAYING" })
 })
 
 Notif.on('video', (video) => {
@@ -17,54 +17,60 @@ Notif.on('video', (video) => {
 
 client.on('guildMemberAdd', async guildMember => {
     if (guildMember.guild.id === '서버 ID') {
-    client.channels.cache.get('채널 ID').send(`<@${guildMember.id}>님, ** 유튜브 채널에 오신것을 환영합니다!\n<#803660308504903681>를 잘 읽고 활동해주세요!`)
-}
+        client.channels.cache.get('채널 ID').send(`<@${guildMember.id}>님, ** 유튜브 채널에 오신것을 환영합니다!\n<#803660308504903681>를 잘 읽고 활동해주세요!`)
+    }
 })
 
 client.on('guildMemberRemove', async guildMember => {
     if (guildMember.guild.id === '서버 ID') {
-    client.channels.cache.get('채널 ID').send(`${guildMember.user.tag}님이 서버에서 나가셨습니다.`)
+        client.channels.cache.get('채널 ID').send(`${guildMember.user.tag}님이 서버에서 나가셨습니다.`)
     }
 })
 
 client.on('message', async msg => {
     if (msg.guild.id === `서버 ID`) {
-    if (msg.author.bot) return
-    const args = msg.content.trim().split(/ +/);
-    if (msg.content.includes('안녕') || msg.content.includes('hi') || msg.content.includes('hello')) return msg.reply('안녕하세요!')
-    if (msg.content === `!유튜브` || msg.content === `!채널`) {
-        const embed = new Discord.MessageEmbed()
-            .setColor('#D4F638')
-            .setTitle('** 유튜브')
-            .setURL('https://www.youtube.com/channel/**********************')
-            .setThumbnail('https://yt3.ggpht.com/ytc/***************************************************************')
-            .setDescription('[** 유튜브입니다!](https://www.youtube.com/channel/**********************)')
-        msg.reply(embed)
-    }
+        if (msg.author.bot) return
+        const args = msg.content.trim().split(/ +/);
+        if (msg.content.includes('안녕') || msg.content.includes('hi') || msg.content.includes('hello')) return msg.reply('안녕하세요!')
+        if (msg.content === `!유튜브` || msg.content === `!채널`) {
+            const embed = new Discord.MessageEmbed()
+                .setColor('#D4F638')
+                .setTitle('** 유튜브')
+                .setURL('https://www.youtube.com/channel/**********************')
+                .setThumbnail('https://yt3.ggpht.com/ytc/***************************************************************')
+                .setDescription('[** 유튜브입니다!](https://www.youtube.com/channel/**********************)')
+            msg.reply(embed)
+        }
 
-    if (msg.content.startsWith('!킥')) {
-        const member = msg.mentions.users.first()
-        const reason = args.slice(1).join(' ')
-        try {
-            member.send(`${reason}로 인해 ** 유튜브 서버에서 추방되었습니다. https://discord.gg/**********`)
-            member.kick(reason)
-            msg.reply(`${reason}으로 인해 ** 유튜브 서버에서 성공적으로 추방되었습니다!`)
-        } catch (error) {
-            msg.reply('**비상**\n에러 발생')
+        if (msg.content.startsWith('!킥')) {
+            if (!message.member.hasPermissions('KICK_MEMBERS')) return msg.reply('권한이 없어요!')
+            const member = msg.mentions.users.first()
+            const reason = args.slice(1).join(' ')
+            if (!member) return msg.reply('맴버를 지정해주세요! `!킥 @맨션 이유`')
+            if (!reason) return msg.reply('이유를 작성해주세요! `!킥 @맨션 이유`')
+            try {
+                member.send(`${reason}로 인해 ** 유튜브 서버에서 추방되었습니다. https://discord.gg/**********`)
+                member.kick(reason)
+                msg.reply(`${reason}으로 인해 ** 유튜브 서버에서 성공적으로 추방되었습니다!`)
+            } catch (error) {
+                msg.reply('**비상**\n에러 발생')
+            }
+        }
+        if (msg.content.startsWith('!밴')) {
+            if (!message.member.hasPermissions('BAN_MEMBERS')) return msg.reply('권한이 없어요!')
+            const member = msg.mentions.users.first()
+            const reason = args.slice(1).join(' ')
+            if (!member) return msg.reply('맴버를 지정해주세요! `!밴 @맨션 이유`')
+            if (!reason) return msg.reply('이유를 작성해주세요! `!밴 @맨션 이유`')
+            try {
+                member.send(`${reason}로 인해 ** 유튜브 서버에서 밴되었습니다.`)
+                member.ban(reason)
+                msg.reply(`${reason}으로 인해 ** 유튜브 서버에서 성공적으로 밴되었습니다!`)
+            } catch (error) {
+                msg.reply('**비상**\n에러 발생')
+            }
         }
     }
-    if (msg.content.startsWith('!밴')) {
-        const member = msg.mentions.users.first()
-        const reason = args.slice(1).join(' ')
-        try {
-            member.send(`${reason}로 인해 ** 유튜브 서버에서 밴되었습니다.`)
-            member.ban(reason)
-            msg.reply(`${reason}으로 인해 ** 유튜브 서버에서 성공적으로 밴되었습니다!`)
-        } catch (error) {
-            msg.reply('**비상**\n에러 발생')
-        }
-    }
-}
 })
 
 client.login('토큰 입력')
