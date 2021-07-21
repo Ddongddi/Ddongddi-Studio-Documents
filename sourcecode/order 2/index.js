@@ -25,7 +25,6 @@ client.on('guildMemberAdd', async guildMember => {
         userID: guildMember.id,
         serverID: guildMember.guild.id,
         warning: 0,
-        work: false
     });
     profile.save();
 })
@@ -41,7 +40,6 @@ client.on('message', async msg => {
                 userID: msg.author.id,
                 serverID: msg.guild.id,
                 warning: 0,
-                work: false
             });
             profile.save();
         }
